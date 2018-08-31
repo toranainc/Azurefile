@@ -1,10 +1,9 @@
 #!/bin/bash
 #$1 for Ftp User Name
 #$2 for Ftp Password
-#$3 for Vm user Name
-#$4 for Vm user Pwd
-#$5 for vm dnsName
-sudo -S <<< "$4" sudo -i
+#$3 for Vm user Pwd
+#$4 for Vm user dnsName
+sudo -S <<< "$3" sudo -i
 (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
 sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /data && sudo mount /dev/sdc1 /data
@@ -42,9 +41,9 @@ ICE_ENV=$CATALINA_HOME/bin/setenv.sh
 BASHRC=$HOME/.bashrc
 ICE_SYSTEMD=/etc/systemd/system/icedq.service
   	sed -i -e "s|/opt/app/icedq/icestore|$ICE_STORE|g" $ICE_PROP
-	sed -i -e 's/192.168.100.90/'"$5"'/g' $ICE_PROP
+	sed -i -e 's/192.168.100.90/'"$4"'/g' $ICE_PROP
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
-	sed -i -e 's/192.168.1.48/'"$5"'/g' $CONFIG_JS
+	sed -i -e 's/192.168.1.48/'"$4"'/g' $CONFIG_JS
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $SERVER_XML
   touch $ICE_ENV
         echo "#!/bin/bash" > $ICE_ENV
