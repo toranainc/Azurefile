@@ -30,11 +30,13 @@ HOSTNAME="`hostname`"
 ICEDQ_CONFIG=/data/icedq
 ICE_STORE=/data/icedq/icestore
 ICE_PORT=80
+ICE_MEM=1024
 JAVA_HOME=/data/deploy/jdk1.8.0_181
 ICE_PROP=$ICEDQ_CONFIG/client/configs/ice_server.properties
 CONFIG_JS=$ICEDQ_CONFIG/app/tomcat/webapps/icehtml/assets/config/config.js
 CATALINA_HOME=$ICEDQ_CONFIG/app/tomcat
 CATALINA_BASE=$ICEDQ_CONFIG/app/tomcat
+CATALINA=$CATALINA_HOME/bin/catalina.sh
 SERVER_XML=$CATALINA_HOME/conf/server.xml
 CATALINA=$CATALINA_HOME/bin/catalina.sh
 ICE_ENV=$CATALINA_HOME/bin/setenv.sh
@@ -45,6 +47,7 @@ ICE_SYSTEMD=/etc/systemd/system/icedq.service
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
 	sed -i -e 's/192.168.1.48/'"$4"'/g' $CONFIG_JS
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $SERVER_XML
+	sed -i -e 's/3072/'"$ICE_MEM"'/g' $CATALINA
   touch $ICE_ENV
         echo "#!/bin/bash" > $ICE_ENV
         echo >> $ICE_ENV
