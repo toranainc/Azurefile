@@ -19,7 +19,6 @@ else
 	#chown -R $1:$1 /home/$3/deploy
 fi
 cd /data/deploy
-#wget --user icedemo --password ice123demo http://download.icedq.com/ice_client_V20.zip
 wget --user  $1 --password $2 http://download.icedq.com/ICEDQ_12_2_0_x64_linux.tar
 tar -xvf ICEDQ_12_2_0_x64_linux.tar 
 #>> /home/icedq
