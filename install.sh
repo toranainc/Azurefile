@@ -34,21 +34,25 @@ ICE_MEM=1024
 JAVA_HOME=/data/deploy/jdk1.8.0_181
 ICE_PROP=$ICEDQ_CONFIG/client/configs/ice_server.properties
 CONFIG_JS=$ICEDQ_CONFIG/app/tomcat/webapps/icehtml/assets/config/config.js
+CONFIG_ICE=$ICEDQ_CONFIG/app/tomcat/webapps/icehtml
 CATALINA_HOME=$ICEDQ_CONFIG/app/tomcat
 CATALINA_BASE=$ICEDQ_CONFIG/app/tomcat
 CATALINA=$CATALINA_HOME/bin/catalina.sh
+CONFIGER_XML=$CATALINA_HOME/webapps/WEB-INF/web.xml
 SERVER_XML=$CATALINA_HOME/conf/server.xml
 CATALINA=$CATALINA_HOME/bin/catalina.sh
 ICE_ENV=$CATALINA_HOME/bin/setenv.sh
 BASHRC=$HOME/.bashrc
 ICE_SYSTEMD=/etc/systemd/system/icedq.service
   	sed -i -e "s|/opt/app/icedq/icestore|$ICE_STORE|g" $ICE_PROP
+	sed -i -e 's/192.168.100.90:8300/icehtml/'"192.168.100.90:8300/ice"'/g' $ICE_PROP
 	sed -i -e 's/192.168.100.90/'"$4"'/g' $ICE_PROP
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
-	sed -i -e 's/8300/'"$ICE_PORT"'/g' $CONFIG_JS
+	sed -i -e 's/8300/icehtml'"$ICE_PORT/ice"'/g' $CONFIG_JS
 	sed -i -e 's/192.168.1.48/'"$4"'/g' $CONFIG_JS
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $SERVER_XML
 	sed -i -e 's/3072/'"$ICE_MEM"'/g' $CATALINA
+	sed -i -e 's/Home.jsp/'"index.html"'/g' $CONFIGER_XML
   touch $ICE_ENV
         echo "#!/bin/bash" > $ICE_ENV
         echo >> $ICE_ENV
@@ -61,6 +65,7 @@ ICE_SYSTEMD=/etc/systemd/system/icedq.service
 		#chmod 755 $ICE_ENV
 		#chown -R icedq:icedq $ICE_ENV
 source $CATALINA_HOME/bin/setenv.sh
+mv $CONFIG_ICE/* $CATALINA_HOME/webapps/ice
 # Service install Logic 
 for i in 1;
 do
