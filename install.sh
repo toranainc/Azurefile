@@ -38,17 +38,16 @@ CONFIG_ICE=$ICEDQ_CONFIG/app/tomcat/webapps/icehtml
 CATALINA_HOME=$ICEDQ_CONFIG/app/tomcat
 CATALINA_BASE=$ICEDQ_CONFIG/app/tomcat
 CATALINA=$CATALINA_HOME/bin/catalina.sh
-CONFIGER_XML=$CATALINA_HOME/webapps/WEB-INF/web.xml
+CONFIGER_XML=$CATALINA_HOME/webapps/ice/WEB-INF/web.xml
 SERVER_XML=$CATALINA_HOME/conf/server.xml
 CATALINA=$CATALINA_HOME/bin/catalina.sh
 ICE_ENV=$CATALINA_HOME/bin/setenv.sh
 BASHRC=$HOME/.bashrc
 ICE_SYSTEMD=/etc/systemd/system/icedq.service
   	sed -i -e "s|/opt/app/icedq/icestore|$ICE_STORE|g" $ICE_PROP
-	sed -i -e 's/192.168.100.90:8300/icehtml/'"192.168.100.90:8300/ice"'/g' $ICE_PROP
 	sed -i -e 's/192.168.100.90/'"$4"'/g' $ICE_PROP
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
-	sed -i -e 's/8300/icehtml'"$ICE_PORT/ice"'/g' $CONFIG_JS
+	sed -i -e 's/icehtml/'"ice"'/g' $ICE_PROP
 	sed -i -e 's/192.168.1.48/'"$4"'/g' $CONFIG_JS
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $SERVER_XML
 	sed -i -e 's/3072/'"$ICE_MEM"'/g' $CATALINA
