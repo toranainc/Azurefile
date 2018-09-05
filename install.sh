@@ -49,6 +49,7 @@ ICE_SYSTEMD=/etc/systemd/system/icedq.service
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
 	sed -i -e 's/icehtml/'"ice"'/g' $ICE_PROP
 	sed -i -e 's/192.168.1.48/'"$4"'/g' $CONFIG_JS
+	sed -i -e 's/8300/'"$ICE_PORT"'/g' $CONFIG_JS
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $SERVER_XML
 	sed -i -e 's/3072/'"$ICE_MEM"'/g' $CATALINA
 	sed -i -e 's/Home.jsp/'"index.html"'/g' $CONFIGER_XML
