@@ -3,6 +3,7 @@
 #$2 for Ftp Password
 #$3 for Vm user Pwd
 #$4 for Vm user dnsName
+#$5 for Vm Pwd
 sudo -S <<< "$3" sudo -i
 (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
 sudo mkfs -t ext4 /dev/sdc1
