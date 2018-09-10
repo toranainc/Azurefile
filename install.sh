@@ -93,6 +93,8 @@ done
 sudo chmod -R 755 /etc/systemd/system
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
+chmod -R 755 $ICE_SYSTEMD
+chown -R "$5":"$5" $ICE_SYSTEMD
 chmod -R 755 $ICEDQ_CONFIG
 chown -R $5:$5 /data
 cd /home/icedqadmin 
