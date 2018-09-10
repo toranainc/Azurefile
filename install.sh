@@ -67,6 +67,7 @@ ICE_SYSTEMD=/etc/systemd/system/icedq.service
 		#chown -R icedq:icedq $ICE_ENV
 source $CATALINA_HOME/bin/setenv.sh
 mv $CONFIG_ICE/* $CATALINA_HOME/webapps/ice
+rm -rf /data/icedq/app/vedit
 # Service install Logic 
 for i in 1;
 do
@@ -91,7 +92,6 @@ done
 sudo chmod -R 755 /etc/systemd/system
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
-rm -rf /data/icedq/app/vedit
 chmod -R 755 $ICEDQ_CONFIG
 chown -R $5:$5 /data
 cd /home/icedqadmin 
