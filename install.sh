@@ -3,7 +3,7 @@
 #$2 for Ftp Password
 #$3 for Vm user Pwd
 #$4 for Vm user dnsName
-#$5 for Vm Pwd
+#$5 for Vm name
 sudo -S <<< "$3" sudo -i
 (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
 sudo mkfs -t ext4 /dev/sdc1
@@ -92,6 +92,11 @@ sudo chmod -R 755 /etc/systemd/system
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
 chmod -R 755 $ICEDQ_CONFIG
+chown -R $5:$5 /data
+cd /home/icedqadmin 
+echo "$3" |su --login $5
+echo "$3" | sudo -S sudo systemctl start icedq.service
+
 #chown -R icedq:icedq $ICEDQ_CONFIG
 #sh $CATALINA_HOME/bin/startup.sh
-sudo systemctl start icedq.service
+#sudo systemctl start icedq.service
