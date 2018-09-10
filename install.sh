@@ -91,6 +91,7 @@ done
 sudo chmod -R 755 /etc/systemd/system
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
+rm -rf /data/icedq/app/vedit
 chmod -R 755 $ICEDQ_CONFIG
 chown -R $5:$5 /data
 cd /home/icedqadmin 
