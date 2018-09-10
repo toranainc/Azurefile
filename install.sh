@@ -83,7 +83,7 @@ Environment=CATALINA_PID=$ICEDQ_CONFIG/app/tomcat/temp/icedq.pid
 Environment='JAVA_OPTS= -Djava.security.egd=file:/dev/./urandom'
 ExecStart= $CATALINA_HOME/bin/startup.sh
 ExecStop=/bin/kill -15 $MAINPID
-User=root
+User=$5
 [Install]
 WantedBy=multi-user.target" > $ICE_SYSTEMD
 sudo systemctl enable icedq.service
