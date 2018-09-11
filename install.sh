@@ -79,7 +79,7 @@ Description=ICEDQ Service
 After=syslog.target network.target
 [Service]
 Type=forking
-User="$5"
+#User="$5"
 WorkingDirectory=$CATALINA_HOME
 Environment=CATALINA_PID=$ICEDQ_CONFIG/app/tomcat/temp/icedq.pid
 Environment='JAVA_OPTS= -Djava.security.egd=file:/dev/./urandom'
@@ -91,8 +91,8 @@ sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
 done
 
-chmod -R 755 $ICE_SYSTEMD
-chown -R "$5":"$5" $ICE_SYSTEMD
+#chmod -R 755 $ICE_SYSTEMD
+#chown -R "$5":"$5" $ICE_SYSTEMD
 
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
