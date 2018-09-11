@@ -79,7 +79,7 @@ Description=ICEDQ Service
 After=syslog.target network.target
 [Service]
 User="$5"
-Group=="$5"
+Group="$5"
 Type=forking
 WorkingDirectory=$CATALINA_HOME
 Environment=CATALINA_PID=$ICEDQ_CONFIG/app/tomcat/temp/icedq.pid
