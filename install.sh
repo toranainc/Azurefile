@@ -80,7 +80,6 @@ After=syslog.target network.target
 [Service]
 Type=forking
 User="$5"
-Group="$5"
 WorkingDirectory=$CATALINA_HOME
 Environment=CATALINA_PID=$ICEDQ_CONFIG/app/tomcat/temp/icedq.pid
 Environment='JAVA_OPTS= -Djava.security.egd=file:/dev/./urandom'
