@@ -44,7 +44,7 @@ SERVER_XML=$CATALINA_HOME/conf/server.xml
 CATALINA=$CATALINA_HOME/bin/catalina.sh
 ICE_ENV=$CATALINA_HOME/bin/setenv.sh
 BASHRC=$HOME/.bashrc
-ICE_SYSTEMD=/etc/systemd/system/icedq.service
+ICE_SYSTEMD=/usr/lib/systemd/system/icedq.service
   	sed -i -e "s|/opt/app/icedq/icestore|$ICE_STORE|g" $ICE_PROP
 	sed -i -e 's/192.168.100.90/'"$4"'/g' $ICE_PROP
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
@@ -78,8 +78,9 @@ do
 Description=ICEDQ Service
 After=syslog.target network.target
 [Service]
+User="$5"
+Group=="$5"
 Type=forking
-#User="$5"
 WorkingDirectory=$CATALINA_HOME
 Environment=CATALINA_PID=$ICEDQ_CONFIG/app/tomcat/temp/icedq.pid
 Environment='JAVA_OPTS= -Djava.security.egd=file:/dev/./urandom'
@@ -91,8 +92,8 @@ sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
 done
 
-#chmod -R 755 $ICE_SYSTEMD
-#chown -R "$5":"$5" $ICE_SYSTEMD
+chmod -R 755 $ICE_SYSTEMD
+chown -R "$5":"$5" $ICE_SYSTEMD
 
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
