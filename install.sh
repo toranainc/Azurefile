@@ -100,6 +100,8 @@ sudo systemctl daemon-reload
 
 chmod -R 755 $ICEDQ_CONFIG
 chown -R $5:$5 /data
+echo '$3' | sudo -S su - $5
+
 #cd /home/icedqadmin 
 #echo "$3" |su --login $5
 #echo "$3" | sudo -S sudo systemctl start icedq.service
