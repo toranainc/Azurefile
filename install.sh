@@ -44,7 +44,8 @@ SERVER_XML=$CATALINA_HOME/conf/server.xml
 CATALINA=$CATALINA_HOME/bin/catalina.sh
 ICE_ENV=$CATALINA_HOME/bin/setenv.sh
 BASHRC=$HOME/.bashrc
-ICE_SYSTEMD=/usr/lib/systemd/system/icedq.service
+ICE_SYSTEMD=/etc/systemd/system/icedq.service
+#/usr/lib/systemd/system/icedq.service
   	sed -i -e "s|/opt/app/icedq/icestore|$ICE_STORE|g" $ICE_PROP
 	sed -i -e 's/192.168.100.90/'"$4"'/g' $ICE_PROP
 	sed -i -e 's/8300/'"$ICE_PORT"'/g' $ICE_PROP
