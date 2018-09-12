@@ -92,13 +92,13 @@ sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
 done
 
-chmod -R 755 $ICE_SYSTEMD
+chmod -R 777 $ICE_SYSTEMD
 chown -R "$5":"$5" $ICE_SYSTEMD
 
 sudo systemctl enable icedq.service
 sudo systemctl daemon-reload
 
-chmod -R 755 $ICEDQ_CONFIG
+chmod -R 777 $ICEDQ_CONFIG
 chown -R $5:$5 /data
 echo '$3' | sudo -S su - $5
 
@@ -108,4 +108,4 @@ echo '$3' | sudo -S su - $5
 
 #chown -R icedq:icedq $ICEDQ_CONFIG
 #sh $CATALINA_HOME/bin/startup.sh
-sudo systemctl start icedq.service
+echo "$3" | sudo systemctl start icedq.service
