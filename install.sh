@@ -108,4 +108,5 @@ echo '$3' | sudo -S su - $5
 
 #chown -R icedq:icedq $ICEDQ_CONFIG
 #sh $CATALINA_HOME/bin/startup.sh
+sudo su - $5
 echo "$3" | sudo systemctl start icedq.service
