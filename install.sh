@@ -3,7 +3,7 @@
 #$2 for Ftp Password
 #$3 for Vm user Pwd
 #$4 for Vm user dnsName
-#$5 for Vm name
+#$5 for Vm user name
 sudo -S <<< "$3" sudo -i
 (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
 sudo mkfs -t ext4 /dev/sdc1
@@ -30,7 +30,7 @@ mv -f /data/deploy/ICEDQ_12_2_0_x64_linux/icedq /data/icedq
 HOSTNAME="`hostname`"
 ICEDQ_CONFIG=/data/icedq
 ICE_STORE=/data/icedq/icestore
-ICE_PORT=80
+ICE_PORT=8300
 ICE_MEM=1024
 JAVA_HOME=/data/deploy/jdk1.8.0_181
 ICE_PROP=$ICEDQ_CONFIG/client/configs/ice_server.properties
